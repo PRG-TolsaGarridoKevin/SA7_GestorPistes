@@ -1,17 +1,20 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
+
 import java.util.Date;
 import java.util.Objects;
 
 public class Pista {
+
+    private static int contadorId = 1;
+
     private int id;
     private String descripcio;
     private Categoria categoria;
     private int confiabilitat;
     private Date dataDescobriment;
 
-    //cuando hacemos new pista sumamos 1 a la pista
     public Pista(int id, String descripcio, Categoria categoria, int confiabilitat, Date dataDescobriment) {
-        this.id = id;
+        this.id = contadorId++;
         this.descripcio = descripcio;
         this.categoria = categoria;
         this.confiabilitat = confiabilitat;
@@ -25,20 +28,9 @@ public class Pista {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+        return Objects.hash(categoria, descripcio);
     }
 
-    
-    
-    /*
-        Es considera que una pista és igual a un altra si la seua categoria 
-        coincideix i, a més, el 80% de les paraules de la descripció també
-        coincideixen (es considera com a separador entre paraules, l’espai 
-        en blanc (un o mes seguits), la coma i/o el punt).
-    */
-    
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -51,10 +43,31 @@ public class Pista {
             return false;
         }
         final Pista other = (Pista) obj;
-        if (!Objects.equals(this.descripcio, other.descripcio)) {
+        if (this.categoria != other.categoria) {
             return false;
         }
-        return this.categoria == other.categoria;
+
+        String[] descripcion1 = dividirEnPalabras(this.descripcio);
+        String[] descripcion2 = dividirEnPalabras(other.descripcio);
+
+        int palabrasIguales = 0;
+        for (String palabraDescripcion1 : descripcion1) {
+            for (String palabraDescripcion2 : descripcion2) {
+                if (palabraDescripcion1.equalsIgnoreCase(palabraDescripcion2)) {
+                    palabrasIguales++;
+                    break;
+                }
+            }
+        }
+        double porcentajeCoincidencias = (double) palabrasIguales / Math.max(descripcion1.length, descripcion2.length);
+        return porcentajeCoincidencias >= 0.80;
     }
-    
+
+    private String[] dividirEnPalabras(String descripcion) {
+        if (descripcion == null || descripcion.isEmpty()) {
+            return new String[0];
+        }
+        String descripcionLimpiada = descripcion.replaceAll("[\\.,]", "");
+        return descripcionLimpiada.trim().split("\\s+");
+    }
 }
