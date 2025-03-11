@@ -13,12 +13,12 @@ public class Pista {
     private int confiabilitat;
     private Date dataDescobriment;
 
-    public Pista(int id, String descripcio, Categoria categoria, int confiabilitat, Date dataDescobriment) {
+    public Pista(String descripcio, Categoria categoria, int confiabilitat) {
         this.id = contadorId++;
         this.descripcio = descripcio;
         this.categoria = categoria;
         this.confiabilitat = confiabilitat;
-        this.dataDescobriment = dataDescobriment;
+        this.dataDescobriment = new Date();
     }
 
     @Override
