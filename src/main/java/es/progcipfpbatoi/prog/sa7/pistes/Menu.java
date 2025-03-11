@@ -25,13 +25,13 @@ public class Menu {
                 Pista novaPista = new Pista(descripcionPista,categoria,nivelFiavilidad);
                 
                 if (asociarPista) {
-                    //Si dice que si añadir la pista a una investigacion concreta (el nombre se la pasa el usuario) 
                     String nombreInvestigacion = GestorIO.llegirText("Ingresa el nom de la investigació: ");
-                    
-                    //Si no existe se crea una nueva investigacion
+                    GestorPistes.afegirPistesAInvestigacio(novaPista,nombreInvestigacion);
+                }else{
+                    GestorPistes.afegirPistes(novaPista);
                 }
-                     //si la pista no se asocia ,solo se añadira a la lista de pistas  
-                GestorPistes.afegirPistes(novaPista);
+                   
+             
             break;
             
             case 2:

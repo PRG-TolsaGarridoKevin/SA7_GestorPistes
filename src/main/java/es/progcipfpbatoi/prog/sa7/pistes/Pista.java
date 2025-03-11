@@ -70,4 +70,10 @@ public class Pista {
         String descripcionLimpiada = descripcion.replaceAll("[\\.,]", "");
         return descripcionLimpiada.trim().split("\\s+");
     }
+
+    public int getId() {
+        return id;
+    }
+    
+    
 }
