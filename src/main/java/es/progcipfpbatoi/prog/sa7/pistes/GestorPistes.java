@@ -15,13 +15,7 @@ public class GestorPistes {
     //Acciones de la clase -------------------------------------------------------
     
     //AfegirPistes --> AfegirPistesAInvestigacio
-    public static void afegirPistes(Pista pista, boolean asociarPista){
-        //Preguntar por asociar en el Menu
-        if (asociarPista) {
-            
-        }
-        //Si dice que si añadir la pista a una investigacion concreta (el nombre se la pasa el usuario) 
-        //Si no existe se crea una nueva investigacion , si la pista no se asocia ,solo se añadira a la lista de pistas  
+    public static void afegirPistes(Pista pista){
         
         if (listaPistes.contains(pista)) {
             //Si la pista esta repetida, antes de añadirla se sustitullen las fechas de las pistas repetidas 

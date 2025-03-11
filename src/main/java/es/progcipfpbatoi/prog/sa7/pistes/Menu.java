@@ -20,11 +20,18 @@ public class Menu {
                 String seleccionCategoria = GestorIO.llegirText("Categoria (Govern/Tecnologia/Misteri/Corruppció): ");
                 Categoria categoria = Categoria.fromString(seleccionCategoria);
                 int nivelFiavilidad = GestorIO.llegirNumEnter("Nivell de confiabilitat (1-10): ");
-                boolean anyadirAInvestigacio = GestorIO.solicitarConfirmacio("Vols asociar aquesta pista a una investigacio? (S/N): ");
+                boolean asociarPista = GestorIO.solicitarConfirmacio("Vols asociar aquesta pista a una investigacio? (S/N): ");
                
                 Pista novaPista = new Pista(descripcionPista,categoria,nivelFiavilidad);
-
-                GestorPistes.afegirPistes(novaPista,anyadirAInvestigacio);
+                
+                if (asociarPista) {
+                    //Si dice que si añadir la pista a una investigacion concreta (el nombre se la pasa el usuario) 
+                    String nombreInvestigacion = GestorIO.llegirText("Ingresa el nom de la investigació: ");
+                    
+                    //Si no existe se crea una nueva investigacion
+                }
+                     //si la pista no se asocia ,solo se añadira a la lista de pistas  
+                GestorPistes.afegirPistes(novaPista);
             break;
             
             case 2:
