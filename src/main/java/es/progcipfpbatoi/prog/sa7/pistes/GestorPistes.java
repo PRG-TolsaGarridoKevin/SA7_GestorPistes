@@ -44,12 +44,35 @@ public class GestorPistes {
         System.out.printf("Pista %d agregada amb exit",pista.getId());
     }
     
+
+    //EliminarPistesSospitoses (repetidas y poco fiables)
+    public static void eliminarPistesSospitoses(){
+        for (int i = 0; i < GestorPistes.listaPistes.size(); i++) {
+            Pista pistaActual = listaPistes.get(i);
+            
+            for (int j = i+1; j < listaPistes.size(); j++) {
+                Pista pistaAComparar = listaPistes.get(j);
+                
+                if (pistaActual.equals(pistaAComparar)) {
+                    if (pistaActual.getId() > pistaAComparar.getId()) {
+                        listaPistes.remove(pistaActual);
+                    }else{
+                        listaPistes.remove(pistaAComparar);
+                    }
+                }      
+            }
+        }
+    
+    //2-Una vez terminado el proceso 1 , se eliminaran todas las pistas de la lista de fiabilidad inferior a 4, estas si se archivaran
+    //Al terminar se muestra un mensaje (ver ejemplo de ejecucion)
+    
+    }
+    
+    
+    
     
     
     //**** Repasar documentacion para completar los metodos siguienntes ****
-    
-    
-    //EliminarPistesSospitoses
     
     //BuscarPistesPerParaulaClau
     
