@@ -4,7 +4,7 @@ public class Menu {
     boolean continuar = true;
 
     while (continuar) {
-        System.out.println("MENU DE L'INVESTIGADOR");
+        System.out.println("\nMENU DE L'INVESTIGADOR");
         System.out.println("1. Afegir pistes");
         System.out.println("2. Eliminar pistes sospitoses");
         System.out.println("3. Buscar pistes per paraules clau");

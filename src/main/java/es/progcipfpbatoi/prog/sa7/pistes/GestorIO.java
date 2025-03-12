@@ -26,7 +26,7 @@ public class GestorIO {
         boolean bucleActivo = true;
         while (bucleActivo) {
             System.out.println(missatge);
-            String respuesta = scanner.next();
+            String respuesta = scanner.nextLine();
             if (respuesta.equalsIgnoreCase("s")) {
                 return true;
             } else if (respuesta.equalsIgnoreCase("n")) {

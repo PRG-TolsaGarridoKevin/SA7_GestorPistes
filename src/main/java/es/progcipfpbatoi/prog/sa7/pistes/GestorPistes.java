@@ -20,16 +20,16 @@ public class GestorPistes {
     public static void afegirPistesAInvestigacio(Pista pista, String nombreInvestigacion){
         investigaciones.put(nombreInvestigacion, listaPistes);
         if (investigaciones.containsKey(nombreInvestigacion)) {
-            System.out.println("Pista "+pista.getId()+" agregada amb exit (asociada al cas " + nombreInvestigacion+")");
+            System.out.println("\nPista "+pista.getId()+" agregada amb exit (asociada al cas " + nombreInvestigacion+")");
         }else{
-            System.out.println("Pista "+pista.getId()+" agregada amb exit (asociada al nou cas " + nombreInvestigacion+")");
+            System.out.println("\nPista "+pista.getId()+" agregada amb exit (asociada al nou cas " + nombreInvestigacion+")");
         }
     }
         
     public static void afegirPistes(Pista pista){
         
     if (listaPistes.contains(pista)) {
-        System.out.println("La pista ja existeix");
+        System.out.println("\nLa pista ja existeix\n");
 
         for (Pista pistaExistente : listaPistes) {
             if (pistaExistente.equals(pista)) {
@@ -86,8 +86,8 @@ public class GestorPistes {
         }
         
         System.out.println("\nProcés d'eliminació de pistes completat =>");
+        System.out.printf("\tArxivades per baixa confiabilitat: %d\n",contEliminacionPorBajaFiabilidad);
         System.out.printf("\tEliminades per repetició: %d\n",contEliminacionPorRepeticion);
-        System.out.printf("\tEliminades per baixa confiabilitat: %d\n",contEliminacionPorBajaFiabilidad);
         System.out.println(".....\n");
     }
     
@@ -136,36 +136,41 @@ public class GestorPistes {
     
     //MostrarTotesLesPistes
     public static void mostrarTotesLesPistes(){
-        //Mostrar totes les pistes: Mostra totes les pistes emmagatzemades (en la lista)
+        //Mostrar totes les pistes
         if (GestorPistes.listaPistes.isEmpty()) {
             System.out.printf("\nNo hi ha cap pista en la llista de pistes\n");
         }else{
             int cont = 1; 
             System.out.println("Pistes de la llista");
             for (Pista pista : listaPistes) {
-                System.out.println("\n"+cont+". "+pista.toString()+"\n");
+                System.out.println("\n"+cont+". "+pista.toString());
                 cont++;
             }
         }
         
-        //(es mostraran pistes repetides) així com les pistes eliminades (Archivadas en el conjunto)
+        //Mostrar pistas archivadas
         if (GestorPistes.pistasArchivadas.isEmpty()) {
             System.out.printf("\nNo hi ha cap pista arxivada\n");
         }else{
             int cont = 1; 
             System.out.println("Pistes arxivades");
             for (Pista pistaArchivada : pistasArchivadas) {
-                System.out.println("\n"+cont+". "+pistaArchivada.toString()+"\n");
+                System.out.println("\n"+cont+". "+pistaArchivada.toString());
                 cont++;
             }
         }
     }
 
-//**** Repasar documentacion para completar los metodos siguienntes ****
+//**** Repasar documentacion para completar los metodos siguientes ****
     
     //MostrarPistesPerCategoria
+    //Llista les pistes agrupades per categoria
+    //només es mostren les pistes de categories donades d’alta en la llista de pistes
     
     //SustituirFechaDePista
+    //Es demanarà l’ingrés d’un id
+    //cas d’existir, es sol·licitarà l’ingrés d’una data per a associar-la a la pista corresponent
+    //S’informarà a l’usuari del resultat de la operació siga el que siga el resultat de la operació
     
     //GestionarInvestigacions --> MostrarInvestigacionsObertes, MostrarPistesDeInvestigacio, TancarInvestigacio
     
