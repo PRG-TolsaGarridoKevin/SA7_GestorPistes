@@ -74,6 +74,20 @@ public class Pista {
     public int getId() {
         return id;
     }
-    
-    
+
+    public Date getDataDescobriment() {
+        return dataDescobriment;
+    }
+
+    public void setDataDescobriment(Date dataDescobriment) {
+        this.dataDescobriment = dataDescobriment;
+    }
+
+    public int getConfiabilitat() {
+        return confiabilitat;
+    }
+
+    public void setConfiabilitat(int confiabilitat) {
+        this.confiabilitat = confiabilitat;
+    }
 }

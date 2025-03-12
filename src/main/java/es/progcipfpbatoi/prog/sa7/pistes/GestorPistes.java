@@ -1,15 +1,16 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class GestorPistes {
-    private static ArrayList<Pista> listaPistes = new ArrayList<>();
+    private static final ArrayList<Pista> listaPistes = new ArrayList<>();
     
     //un conjunto de pistas arxivadas , NO pueden haber pistas repetidas
     //
     
-    private static HashMap<String, ArrayList<Pista>> investigaciones = new HashMap<>();
+    private static final HashMap<String, ArrayList<Pista>> investigaciones = new HashMap<>();
     
     //Acciones de la clase -------------------------------------------------------
     
@@ -25,16 +26,22 @@ public class GestorPistes {
     public static void afegirPistes(Pista pista){
         
     if (listaPistes.contains(pista)) {
-        //Si la pista esta repetida, antes de añadirla se sustitullen las fechas de las pistas repetidas 
-        //a la fecha de la nueva pista añadida, ademas de avisar al usuario con un mensage(ejemplo de ejecucion)
-        //La pista ja existeix.
-        //Actualització de les dates de les pistes repetides a la data 03/02/2025
-        //la fecha de la nueva pista sera la fecha del sistema y la fiabilidad no variara de la original
+        System.out.println("La pista ja existeix");
+
+        for (Pista pistaExistente : listaPistes) {
+            if (pistaExistente.equals(pista)) {
+                Date novaData = new Date();
+                pista.setDataDescobriment(novaData);
+                pistaExistente.setDataDescobriment(novaData);
+                pista.setConfiabilitat(pistaExistente.getConfiabilitat()); 
+                System.out.println("Actualització de les dates de les pistes repetides a la data "+ pista.getDataDescobriment());
+                break;
+            }
+        }
     }else{
         listaPistes.add(pista);    
     }
-        //Mensage de que la pista se ha agregado con exito (Pista pista.getID() agregada amb èxit.) el numero varia
-        
+        System.out.printf("Pista %d agregada amb exit",pista.getId());
     }
     
     

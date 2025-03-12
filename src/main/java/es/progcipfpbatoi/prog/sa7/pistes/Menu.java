@@ -30,8 +30,6 @@ public class Menu {
                 }else{
                     GestorPistes.afegirPistes(novaPista);
                 }
-                   
-             
             break;
             
             case 2:
