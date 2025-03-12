@@ -16,9 +16,8 @@ public class Menu {
         switch (opcionSeleccionada) {
             case 1 -> afegirPistes();
             case 2 -> GestorPistes.eliminarPistesSospitoses();
-            case 3 -> {
-            }
-            
+            case 3 -> buscarPistesPerParaulaClau();
+
             case 4 -> {
             }
             
@@ -53,6 +52,11 @@ public class Menu {
         }else{
             GestorPistes.afegirPistes(novaPista);
         }
+    }
+    
+    private static void buscarPistesPerParaulaClau(){
+        String paraulesClauObtenides = GestorIO.llegirText("\nIngresa les paraules clau (Separades per espai en blanc): ");
+        GestorPistes.buscarPistesPerParaulaClau(paraulesClauObtenides);
     }
     
     

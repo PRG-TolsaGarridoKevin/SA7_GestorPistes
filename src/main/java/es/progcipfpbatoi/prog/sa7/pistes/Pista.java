@@ -90,4 +90,8 @@ public class Pista {
     public void setConfiabilitat(int confiabilitat) {
         this.confiabilitat = confiabilitat;
     }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
 }

@@ -92,12 +92,49 @@ public class GestorPistes {
     }
     
     
+    //BuscarPistesPerParaulaClau
+    public static void buscarPistesPerParaulaClau(String paraulesClau){
+        ArrayList<Pista> pistasConPalabraClave = new ArrayList<>();
+        String[] palabrasClave = paraulesClau.split("\\s+"); 
+        
+        //Buscar pistas almacenadas en lista con las palabras clave
+        for (Pista pistaEnLista : GestorPistes.listaPistes) {
+           if (contieneAlgunaParaulaClau(pistaEnLista, palabrasClave)) {
+                pistasConPalabraClave.add(pistaEnLista);
+            }
+        }
+        
+        //Buscar pistas archivadas en conjunto con las palabras clave
+        for (Pista pistaEnArchivo : GestorPistes.pistasArchivadas) {
+            if (contieneAlgunaParaulaClau(pistaEnArchivo, palabrasClave)) {
+                pistasConPalabraClave.add(pistaEnArchivo);
+            }
+        }
+        
+        if (pistasConPalabraClave.isEmpty()) {
+            System.out.print("\nNo hay pistas con esas palabras clave\n");
+        }else{
+            System.out.print("\nPista trobada amb èxit\n");
+            
+            for (Pista pista : pistasConPalabraClave) {
+                System.out.println(pista.toString());
+            }
+        }
+    }
     
-    
+    private static boolean contieneAlgunaParaulaClau(Pista pista, String[] paraulesClau) {
+    String[] palabrasDescripcion = pista.getDescripcio().split("\\s+");
+    for (String paraulaClau : paraulesClau) {
+        for (String palabraDescripcion : palabrasDescripcion) {
+            if (palabraDescripcion.equalsIgnoreCase(paraulaClau)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
     
     //**** Repasar documentacion para completar los metodos siguienntes ****
-    
-    //BuscarPistesPerParaulaClau
     
     //MostrarTotesLesPistes
     
