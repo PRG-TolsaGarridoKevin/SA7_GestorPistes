@@ -1,6 +1,9 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
 public class Menu {
     public void iniciar(){
+    boolean continuar = true;
+
+    while (continuar) {
         System.out.println("MENU DE L'INVESTIGADOR");
         System.out.println("1. Afegir pistes");
         System.out.println("2. Eliminar pistes sospitoses");
@@ -17,9 +20,7 @@ public class Menu {
             case 1 -> afegirPistes();
             case 2 -> GestorPistes.eliminarPistesSospitoses();
             case 3 -> buscarPistesPerParaulaClau();
-
-            case 4 -> {
-            }
+            case 4 -> GestorPistes.mostrarTotesLesPistes();
             
             case 5 -> {
             }
@@ -31,6 +32,9 @@ public class Menu {
             }
             
             case 8 -> {
+                continuar = false;
+                System.out.println("\n[--- Eixint del programa ---]");
+            }
             }  
         }
         GestorIO.tancarScanner();
