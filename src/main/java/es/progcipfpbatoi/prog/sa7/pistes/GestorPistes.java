@@ -3,13 +3,16 @@ package es.progcipfpbatoi.prog.sa7.pistes;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class GestorPistes {
+    //Lista
     private static final ArrayList<Pista> listaPistes = new ArrayList<>();
     
-    //un conjunto de pistas arxivadas , NO pueden haber pistas repetidas
-    //
+    //Conjunto
+    private static final HashSet<Pista> pistasArchivadas = new HashSet<>();
     
+    //Diccionario
     private static final HashMap<String, ArrayList<Pista>> investigaciones = new HashMap<>();
     
     //Acciones de la clase -------------------------------------------------------
@@ -63,7 +66,8 @@ public class GestorPistes {
             }
         }
     
-    //2-Una vez terminado el proceso 1 , se eliminaran todas las pistas de la lista de fiabilidad inferior a 4, estas si se archivaran
+    //2-Una vez terminado el proceso 1 , se eliminaran todas las pistas de la lista de fiabilidad inferior a 4,
+    //estas si se archivaran
     //Al terminar se muestra un mensaje (ver ejemplo de ejecucion)
     
     }

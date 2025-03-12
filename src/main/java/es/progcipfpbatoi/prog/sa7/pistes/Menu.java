@@ -16,20 +16,6 @@ public class Menu {
         switch (opcionSeleccionada) {
             case 1:
                 
-                String descripcionPista = GestorIO.llegirText("Ingressa la descripció de la pista: ");
-                String seleccionCategoria = GestorIO.llegirText("Categoria (Govern/Tecnologia/Misteri/Corruppció): ");
-                Categoria categoria = Categoria.fromString(seleccionCategoria);
-                int nivelFiavilidad = GestorIO.llegirNumEnter("Nivell de confiabilitat (1-10): ");
-                boolean asociarPista = GestorIO.solicitarConfirmacio("Vols asociar aquesta pista a una investigacio? (S/N): ");
-               
-                Pista novaPista = new Pista(descripcionPista,categoria,nivelFiavilidad);
-                
-                if (asociarPista) {
-                    String nombreInvestigacion = GestorIO.llegirText("Ingresa el nom de la investigació: ");
-                    GestorPistes.afegirPistesAInvestigacio(novaPista,nombreInvestigacion);
-                }else{
-                    GestorPistes.afegirPistes(novaPista);
-                }
             break;
             
             case 2:
@@ -55,8 +41,29 @@ public class Menu {
             break;
             
         }
-        
+
         
         GestorIO.tancarScanner();
     }
+    
+    
+    private static void case1(){
+        String descripcionPista = GestorIO.llegirText("Ingressa la descripció de la pista: ");
+        String seleccionCategoria = GestorIO.llegirText("Categoria (Govern/Tecnologia/Misteri/Corruppció): ");
+        Categoria categoria = Categoria.fromString(seleccionCategoria);
+        int nivelFiavilidad = GestorIO.llegirNumEnter("Nivell de confiabilitat (1-10): ");
+        boolean asociarPista = GestorIO.solicitarConfirmacio("Vols asociar aquesta pista a una investigacio? (S/N): ");
+               
+        Pista novaPista = new Pista(descripcionPista,categoria,nivelFiavilidad);
+                
+        if (asociarPista) {
+            String nombreInvestigacion = GestorIO.llegirText("Ingresa el nom de la investigació: ");
+            GestorPistes.afegirPistesAInvestigacio(novaPista,nombreInvestigacion);
+        }else{
+            GestorPistes.afegirPistes(novaPista);
+        }
+    }
+    
+    
+    
 }
