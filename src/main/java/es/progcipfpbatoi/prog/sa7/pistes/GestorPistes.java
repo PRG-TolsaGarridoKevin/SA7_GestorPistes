@@ -153,7 +153,7 @@ public class GestorPistes {
             System.out.printf("\nNo hi ha cap pista arxivada\n");
         }else{
             int cont = 1; 
-            System.out.println("Pistes arxivades");
+            System.out.println("\nPistes arxivades");
             for (Pista pistaArchivada : pistasArchivadas) {
                 System.out.println("\n"+cont+". "+pistaArchivada.toString());
                 cont++;
@@ -174,4 +174,16 @@ public class GestorPistes {
     
     //GestionarInvestigacions --> MostrarInvestigacionsObertes, MostrarPistesDeInvestigacio, TancarInvestigacio
     
+    
+    public static void afegirPistesTest(){
+        Pista novaPista1 = new Pista("Pista uno de test, per a vorer si funciona correctament",Categoria.CORRUPCIO,6);
+        Pista novaPista2 = new Pista("Pista uno de test per vorer si funciona correctament",Categoria.CORRUPCIO,3);
+        Pista novaPista3 = new Pista("Pista tres de test",Categoria.MISTERI,8);
+        Pista novaPista4 = new Pista("Pista cuatre de test, jsfvskjfvskufvskfuyvskfu",Categoria.TECNOLOGIA,2);
+    
+        listaPistes.add(novaPista1);
+        listaPistes.add(novaPista2);
+        listaPistes.add(novaPista3);
+        listaPistes.add(novaPista4);
+    }
 }

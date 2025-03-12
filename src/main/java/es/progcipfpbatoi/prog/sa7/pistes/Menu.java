@@ -1,6 +1,8 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
 public class Menu {
     public void iniciar(){
+    GestorPistes.afegirPistesTest();
+    
     boolean continuar = true;
 
     while (continuar) {
