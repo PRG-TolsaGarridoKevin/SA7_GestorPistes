@@ -134,9 +134,34 @@ public class GestorPistes {
     return false;
 }
     
-    //**** Repasar documentacion para completar los metodos siguienntes ****
-    
     //MostrarTotesLesPistes
+    public static void mostrarTotesLesPistes(){
+        //Mostrar totes les pistes: Mostra totes les pistes emmagatzemades (en la lista)
+        if (GestorPistes.listaPistes.isEmpty()) {
+            System.out.printf("\nNo hi ha cap pista en la llista de pistes\n");
+        }else{
+            int cont = 1; 
+            System.out.println("Pistes de la llista");
+            for (Pista pista : listaPistes) {
+                System.out.println("\n"+cont+". "+pista.toString()+"\n");
+                cont++;
+            }
+        }
+        
+        //(es mostraran pistes repetides) així com les pistes eliminades (Archivadas en el conjunto)
+        if (GestorPistes.pistasArchivadas.isEmpty()) {
+            System.out.printf("\nNo hi ha cap pista arxivada\n");
+        }else{
+            int cont = 1; 
+            System.out.println("Pistes arxivades");
+            for (Pista pistaArchivada : pistasArchivadas) {
+                System.out.println("\n"+cont+". "+pistaArchivada.toString()+"\n");
+                cont++;
+            }
+        }
+    }
+
+//**** Repasar documentacion para completar los metodos siguienntes ****
     
     //MostrarPistesPerCategoria
     

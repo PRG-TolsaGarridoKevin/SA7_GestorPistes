@@ -23,7 +23,7 @@ public class Pista {
 
     @Override
     public String toString() {
-        return "[" + categoria + "]" + descripcio + " | Confiabilitat:" + confiabilitat + " | Descoberta el " + dataDescobriment;
+        return "[" + categoria + "] " + descripcio + " | Confiabilitat: " + confiabilitat + " | Descoberta el " + dataDescobriment;
     }
 
     @Override
