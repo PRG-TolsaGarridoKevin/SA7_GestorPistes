@@ -161,11 +161,24 @@ public class GestorPistes {
         }
     }
 
-//**** Repasar documentacion para completar los metodos siguientes ****
-    
     //MostrarPistesPerCategoria
-    //Llista les pistes agrupades per categoria
-    //només es mostren les pistes de categories donades d’alta en la llista de pistes
+    public static void mostrarPistesPerCategoria(String categoria){
+        int cont = 1;
+        ArrayList<Pista> listaCategorias = new ArrayList<>();
+        for (Pista pista : listaPistes) {
+            if (pista.getCategoria().equals(Categoria.fromString(categoria))){
+                System.out.println("\n"+cont+". "+pista.toString());
+                listaCategorias.add(pista);
+                cont++;
+            }
+        }
+        
+        if (listaCategorias.isEmpty()) {
+             System.out.println("\nLa categoria descrita no existeix\n");
+        }
+    } 
+    
+    //**** Repasar documentacion para completar los metodos siguientes ****
     
     //SustituirFechaDePista
     //Es demanarà l’ingrés d’un id

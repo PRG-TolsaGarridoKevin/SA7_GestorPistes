@@ -94,4 +94,10 @@ public class Pista {
     public String getDescripcio() {
         return descripcio;
     }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+    
+    
 }

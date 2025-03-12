@@ -23,15 +23,19 @@ public class Menu {
             case 2 -> GestorPistes.eliminarPistesSospitoses();
             case 3 -> buscarPistesPerParaulaClau();
             case 4 -> GestorPistes.mostrarTotesLesPistes();
-            
-            case 5 -> {
-            }
+            case 5 -> clasificarPistasPorCategorias();
             
             case 6 -> {
             }
             
             case 7 -> {
             }
+            
+            //
+            //
+            //  Hacer un readme explicando que hemos conseguido terminar y que no 
+            //  
+            //
             
             case 8 -> {
                 continuar = false;
@@ -63,6 +67,11 @@ public class Menu {
     private static void buscarPistesPerParaulaClau(){
         String paraulesClauObtenides = GestorIO.llegirText("\nIngresa les paraules clau (Separades per espai en blanc): ");
         GestorPistes.buscarPistesPerParaulaClau(paraulesClauObtenides);
+    }
+    
+    private static void clasificarPistasPorCategorias(){
+        String categoria = GestorIO.llegirText("\nEscriu una categoria [Govern-Misteri-Corrupcio-Tecnologia]: ");
+        GestorPistes.mostrarPistesPerCategoria(categoria);
     }
     
     
