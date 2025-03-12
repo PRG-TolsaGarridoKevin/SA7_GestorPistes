@@ -50,6 +50,9 @@ public class GestorPistes {
 
     //EliminarPistesSospitoses (repetidas y poco fiables)
     public static void eliminarPistesSospitoses(){
+        int contEliminacionPorRepeticion = 0;
+        int contEliminacionPorBajaFiabilidad = 0;
+        
         for (int i = 0; i < GestorPistes.listaPistes.size(); i++) {
             Pista pistaActual = listaPistes.get(i);
             
@@ -58,18 +61,34 @@ public class GestorPistes {
                 
                 if (pistaActual.equals(pistaAComparar)) {
                     if (pistaActual.getId() > pistaAComparar.getId()) {
-                        listaPistes.remove(pistaActual);
+                        listaPistes.remove(i);
+                        contEliminacionPorRepeticion++;
+                        i--;
+                        break;
                     }else{
-                        listaPistes.remove(pistaAComparar);
+                        listaPistes.remove(j);
+                        contEliminacionPorRepeticion++;
+                        j--;
                     }
                 }      
             }
         }
-    
-    //2-Una vez terminado el proceso 1 , se eliminaran todas las pistas de la lista de fiabilidad inferior a 4,
-    //estas si se archivaran
-    //Al terminar se muestra un mensaje (ver ejemplo de ejecucion)
-    
+
+        for (int i = 0; i < GestorPistes.listaPistes.size(); i++) {
+            Pista pistaActual = listaPistes.get(i);
+            
+            if (pistaActual.getConfiabilitat() < 4) {
+                pistasArchivadas.add(pistaActual);
+                listaPistes.remove(i);
+                contEliminacionPorBajaFiabilidad++;
+                i--;
+            }
+        }
+        
+        System.out.println("\nProcés d'eliminació de pistes completat =>");
+        System.out.printf("\tEliminades per repetició: %d\n",contEliminacionPorRepeticion);
+        System.out.printf("\tEliminades per baixa confiabilitat: %d\n",contEliminacionPorBajaFiabilidad);
+        System.out.println(".....\n");
     }
     
     

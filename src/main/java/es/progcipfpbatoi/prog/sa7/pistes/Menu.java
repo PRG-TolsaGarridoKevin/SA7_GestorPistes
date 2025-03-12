@@ -14,40 +14,31 @@ public class Menu {
         int opcionSeleccionada = GestorIO.llegirNumEnter("\nSelecciona una opció: ");
         
         switch (opcionSeleccionada) {
-            case 1:
-                
-            break;
+            case 1 -> afegirPistes();
+            case 2 -> GestorPistes.eliminarPistesSospitoses();
+            case 3 -> {
+            }
             
-            case 2:
-            break;
+            case 4 -> {
+            }
             
-            case 3:
-            break;
+            case 5 -> {
+            }
             
-            case 4:
-            break;
+            case 6 -> {
+            }
             
-            case 5:
-            break;
+            case 7 -> {
+            }
             
-            case 6:
-            break;
-            
-            case 7:
-            break;
-            
-            case 8:
-                
-            break;
-            
+            case 8 -> {
+            }  
         }
-
-        
         GestorIO.tancarScanner();
     }
     
     
-    private static void case1(){
+    private static void afegirPistes(){
         String descripcionPista = GestorIO.llegirText("Ingressa la descripció de la pista: ");
         String seleccionCategoria = GestorIO.llegirText("Categoria (Govern/Tecnologia/Misteri/Corruppció): ");
         Categoria categoria = Categoria.fromString(seleccionCategoria);
