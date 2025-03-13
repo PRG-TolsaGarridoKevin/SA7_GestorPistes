@@ -24,10 +24,7 @@ public class Menu {
             case 3 -> buscarPistesPerParaulaClau();
             case 4 -> GestorPistes.mostrarTotesLesPistes();
             case 5 -> clasificarPistasPorCategorias();
-            
-            case 6 -> {
-            }
-            
+            case 6 -> substiturData();
             case 7 -> {
             }
             
@@ -74,6 +71,18 @@ public class Menu {
         GestorPistes.mostrarPistesPerCategoria(categoria);
     }
     
+    private static void substiturData(){
+        int idPista = GestorIO.llegirNumEnter("Ingresa el ID de la pista: ");
+        GestorPistes.substituirDataDeUnaPista(idPista);
+    }
     
+    public static void pedirNuevaFecha(){
+        GestorIO.llegirText("Ingresa la nova data (dd/mm/yyyy): ");
+        
+        //Comprobar si la fecha es correcta, si no lo es la vuelve a pedir
+        //S’informarà a l’usuari del resultat de la operació siga el que siga el resultat de la operació
+        //Error. Format incorrecte
+        //Data de pista %d modificada amb èxit
+    }
     
 }

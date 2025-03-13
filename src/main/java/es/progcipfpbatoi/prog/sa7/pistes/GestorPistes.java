@@ -177,13 +177,17 @@ public class GestorPistes {
              System.out.println("\nLa categoria descrita no existeix\n");
         }
     } 
-    
-    //**** Repasar documentacion para completar los metodos siguientes ****
-    
+        
     //SustituirFechaDePista
-    //Es demanarà l’ingrés d’un id
-    //cas d’existir, es sol·licitarà l’ingrés d’una data per a associar-la a la pista corresponent
-    //S’informarà a l’usuari del resultat de la operació siga el que siga el resultat de la operació
+    public static void substituirDataDeUnaPista(int idPista){
+        for (Pista pista : listaPistes) {
+            if (pista.getId() == idPista) {
+                System.out.printf("La pista %d si existeix\n",idPista);
+                Menu.pedirNuevaFecha();
+            }
+        }
+    }
+    
     
     //GestionarInvestigacions --> MostrarInvestigacionsObertes, MostrarPistesDeInvestigacio, TancarInvestigacio
     
