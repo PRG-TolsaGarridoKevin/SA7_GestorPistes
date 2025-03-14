@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class GestorPistes {
     //Lista
@@ -18,7 +19,9 @@ public class GestorPistes {
     //Acciones de la clase -------------------------------------------------------
     
     public static void afegirPistesAInvestigacio(Pista pista, String nombreInvestigacion){
+        listaPistes.add(pista);
         investigaciones.put(nombreInvestigacion, listaPistes);
+        
         if (investigaciones.containsKey(nombreInvestigacion)) {
             System.out.println("\nPista "+pista.getId()+" agregada amb exit (asociada al cas " + nombreInvestigacion+")");
         }else{
@@ -184,17 +187,36 @@ public class GestorPistes {
                 Menu.pedirNuevaFecha(pistaEncontrada);
             }else{
                 System.out.printf("La pista %d no existeix\n",idPista);
+                break;
             }
         }
     }
     
-    //
-    //
-    //
     //GestionarInvestigacions --> MostrarInvestigacionsObertes, MostrarPistesDeInvestigacio, TancarInvestigacio
-    //
-    //
-    //
+    public static void gestionarInvestigacions(){
+        System.out.println("\nGestionar investigacions");
+        System.out.println("1. Mostrar totes les investigacions");
+        System.out.println("2. Mostrar pistes per investigació");
+        System.out.println("3. Tancar una investigació");
+        
+        int opcionSeleccionada = GestorIO.llegirNumEnter("Selecciona una opció: ");
+        
+        switch(opcionSeleccionada){
+            case 1 -> {
+                System.out.println("\nInvestigacions Obertes\n");
+                int contador = 1;
+                for (Map.Entry<String,ArrayList<Pista>> investigacion : investigaciones.entrySet()) {
+                    System.out.println(contador+". "+investigacion.getKey()+" (Pistes asociades: "+investigacion.getValue().size()+")\n");
+                    contador++;
+                }
+            }
+            case 2 -> {}
+            case 3 -> {}
+                  
+        
+        }
+    
+    }
     
     public static void afegirPistesTest(){
         Pista novaPista1 = new Pista("Pista uno de test, per a vorer si funciona correctament",Categoria.CORRUPCIO,6);

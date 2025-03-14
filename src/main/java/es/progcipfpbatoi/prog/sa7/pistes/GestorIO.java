@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class GestorIO {
 
     public static Scanner scanner = new Scanner(System.in);
+    private static final String FORMATO_FECHA = "\\d{2}/\\d{2}/\\d{4}\""; 
 
     public static int llegirNumEnter(String missatge) {
         System.out.println(missatge);
@@ -49,7 +50,7 @@ public class GestorIO {
     
     //Añadir metodo para pedir y formatar fecha
     public static String demanarYFormatarData(String data, Pista pista){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         LocalDate dataDemanada = LocalDate.parse(data, formatter);
         Date fechaFinal = new Date(dataDemanada.getYear() - 1900, dataDemanada.getMonthValue() - 1, dataDemanada.getDayOfMonth());
         pista.setDataDescobriment(fechaFinal);

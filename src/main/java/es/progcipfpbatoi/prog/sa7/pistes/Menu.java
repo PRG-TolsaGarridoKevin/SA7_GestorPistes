@@ -28,8 +28,7 @@ public class Menu {
             case 4 -> GestorPistes.mostrarTotesLesPistes();
             case 5 -> clasificarPistasPorCategorias();
             case 6 -> substiturData();
-            case 7 -> {
-            }
+            case 7 -> GestorPistes.gestionarInvestigacions();
             
             //
             //
@@ -92,14 +91,6 @@ public class Menu {
         
         }
         
-        
-        
-        
-        //expresion regular en GestorIO
-        //Comprobar si la fecha es correcta, si no lo es la vuelve a pedir
-        //S’informarà a l’usuari del resultat de la operació siga el que siga el resultat de la operació
-        //Error. Format incorrecte
-        //Data de pista %d modificada amb èxit
     }
     
 }
