@@ -210,6 +210,7 @@ public class GestorPistes {
                     contador++;
                 }
             }
+            
             case 2 -> {
                 String nomInvestigacio = GestorIO.llegirText("Ingresa el nom de la investigació: ");
                 
@@ -222,12 +223,37 @@ public class GestorPistes {
                         contador++;
                     }
                 } else {
-                    System.out.println("La investigació no existeix");
+                    System.out.println("La investigació no existeix\n");
                 }
                 
                 
             }
-            case 3 -> {}
+            
+            case 3 -> {
+                String nomInvestigacioAEliminar = GestorIO.llegirText("Ingresa el nom de la investigació que vols eliminar: ");
+                
+                if (investigaciones.containsKey(nomInvestigacioAEliminar)) {
+                    boolean confirmacion =GestorIO.solicitarConfirmacio("Confirmes que vols eliminar la investigació "+nomInvestigacioAEliminar+" i totes les seues pistes? (S/N): ");
+                        if (confirmacion) {
+                            System.out.println("La investigació "+nomInvestigacioAEliminar+" ha sigut tancada");
+                            //Enviar las pistas de la investigacion a pistasArchivadas
+                            ArrayList<Pista> pistesAArxivar = investigaciones.get(nomInvestigacioAEliminar);
+                            pistasArchivadas.addAll(pistesAArxivar);
+                            //Borrar nomInvestigacioAEliminar del diccionario investigaciones
+                            investigaciones.remove(nomInvestigacioAEliminar);
+                            System.out.println("Les següents pistes han sigut arxivades en l'historial d'evidències: ");
+                            //Mostrar pistasArchivadas
+                            int contador = 1;
+                            for (Pista pista : pistesAArxivar) {
+                                System.out.println(contador+". " + pista);
+                                contador++;
+                            }
+                            
+                        }
+                }else{
+                    System.out.println("La investigació no existeix\n");
+                }
+            }
                   
         
         }
