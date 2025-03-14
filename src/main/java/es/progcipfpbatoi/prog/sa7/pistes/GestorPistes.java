@@ -210,7 +210,23 @@ public class GestorPistes {
                     contador++;
                 }
             }
-            case 2 -> {}
+            case 2 -> {
+                String nomInvestigacio = GestorIO.llegirText("Ingresa el nom de la investigació: ");
+                
+                if (investigaciones.containsKey(nomInvestigacio)) {
+                    System.out.printf("Pistes per a la investigació %s:%n", nomInvestigacio);
+                    ArrayList<Pista> pistes = investigaciones.get(nomInvestigacio);
+                    int contador = 1;
+                    for (Pista pista : pistes) {
+                        System.out.println(contador+". "+pista);
+                        contador++;
+                    }
+                } else {
+                    System.out.println("La investigació no existeix");
+                }
+                
+                
+            }
             case 3 -> {}
                   
         
