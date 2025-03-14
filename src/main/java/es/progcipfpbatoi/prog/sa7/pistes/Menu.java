@@ -1,5 +1,8 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
 public class Menu {
+    
+    private static final String FORMATO_FECHA = "\\d{2}/\\d{2}/\\d{4}\""; 
+    
     public void iniciar(){
     GestorPistes.afegirPistesTest();
     
@@ -76,9 +79,23 @@ public class Menu {
         GestorPistes.substituirDataDeUnaPista(idPista);
     }
     
-    public static void pedirNuevaFecha(){
-        GestorIO.llegirText("Ingresa la nova data (dd/mm/yyyy): ");
+    public static void pedirNuevaFecha(Pista pista){
+        boolean bucleActivo = true;
+        while(bucleActivo){
+            String fecha = GestorIO.demanarYFormatarData("Ingresa la nova data (dd/mm/yyyy): ",pista);
+            if (fecha.matches(FORMATO_FECHA)) {
+                System.out.printf("Data de pista %d modificada amb exit\n",pista.getId());
+                bucleActivo = false;
+            }else{
+                System.out.printf("Error. Format Incorrecte\n");
+            }
         
+        }
+        
+        
+        
+        
+        //expresion regular en GestorIO
         //Comprobar si la fecha es correcta, si no lo es la vuelve a pedir
         //S’informarà a l’usuari del resultat de la operació siga el que siga el resultat de la operació
         //Error. Format incorrecte

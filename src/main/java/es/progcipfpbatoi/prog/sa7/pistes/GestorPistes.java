@@ -140,11 +140,9 @@ public class GestorPistes {
         if (GestorPistes.listaPistes.isEmpty()) {
             System.out.printf("\nNo hi ha cap pista en la llista de pistes\n");
         }else{
-            int cont = 1; 
             System.out.println("Pistes de la llista");
             for (Pista pista : listaPistes) {
-                System.out.println("\n"+cont+". "+pista.toString());
-                cont++;
+                System.out.println("\n"+pista.getId()+". "+pista.toString());
             }
         }
         
@@ -152,11 +150,9 @@ public class GestorPistes {
         if (GestorPistes.pistasArchivadas.isEmpty()) {
             System.out.printf("\nNo hi ha cap pista arxivada\n");
         }else{
-            int cont = 1; 
             System.out.println("\nPistes arxivades");
             for (Pista pistaArchivada : pistasArchivadas) {
-                System.out.println("\n"+cont+". "+pistaArchivada.toString());
-                cont++;
+                System.out.println("\n"+pistaArchivada.getId()+". "+pistaArchivada.toString());
             }
         }
     }
@@ -174,23 +170,31 @@ public class GestorPistes {
         }
         
         if (listaCategorias.isEmpty()) {
-             System.out.println("\nLa categoria descrita no existeix\n");
+            System.out.println("\nLa categoria descrita no existeix\n");
         }
     } 
         
     //SustituirFechaDePista
     public static void substituirDataDeUnaPista(int idPista){
+        Pista pistaEncontrada = null;
         for (Pista pista : listaPistes) {
             if (pista.getId() == idPista) {
+                pistaEncontrada = pista;
                 System.out.printf("La pista %d si existeix\n",idPista);
-                Menu.pedirNuevaFecha();
+                Menu.pedirNuevaFecha(pistaEncontrada);
+            }else{
+                System.out.printf("La pista %d no existeix\n",idPista);
             }
         }
     }
     
-    
+    //
+    //
+    //
     //GestionarInvestigacions --> MostrarInvestigacionsObertes, MostrarPistesDeInvestigacio, TancarInvestigacio
-    
+    //
+    //
+    //
     
     public static void afegirPistesTest(){
         Pista novaPista1 = new Pista("Pista uno de test, per a vorer si funciona correctament",Categoria.CORRUPCIO,6);

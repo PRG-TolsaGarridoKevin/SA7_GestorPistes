@@ -1,5 +1,8 @@
 package es.progcipfpbatoi.prog.sa7.pistes;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class GestorIO {
@@ -8,13 +11,15 @@ public class GestorIO {
 
     public static int llegirNumEnter(String missatge) {
         System.out.println(missatge);
-        while (!scanner.hasNextInt()) {
-            System.out.println("Introduex un nombre enter: ");
-            scanner.hasNextInt();
+        String numeroEntero;
+        while (true) { 
+            numeroEntero = scanner.nextLine();
+            if (numeroEntero.matches("[1-9]\\d*")) {
+                break;
+            }
+            System.out.println("Introdueix un nombre enter: ");
         }
-        int numero = scanner.nextInt();
-        scanner.nextLine();
-        return numero;
+        return Integer.parseInt(numeroEntero);
     }
 
     public static String llegirText(String missatge) {
@@ -41,4 +46,14 @@ public class GestorIO {
     public static void tancarScanner() {
         scanner.close();
     }
+    
+    //Añadir metodo para pedir y formatar fecha
+    public static String demanarYFormatarData(String data, Pista pista){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataDemanada = LocalDate.parse(data, formatter);
+        Date fechaFinal = new Date(dataDemanada.getYear() - 1900, dataDemanada.getMonthValue() - 1, dataDemanada.getDayOfMonth());
+        pista.setDataDescobriment(fechaFinal);
+        return data;
+    }
+    
 }
